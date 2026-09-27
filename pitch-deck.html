@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Protiti (প্রতীতি) — DKC Fellowship 2026 Pitch Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --amethyst: #4A154B;
+      --amethyst-dark: #2B0C2C;
+      --teal: #00695C;
+      --teal-light: #0F766E;
+      --gold: #FFC107;
+      --gold-dark: #92400E;
+      --crimson: #C62828;
+      --charcoal: #FFFFFF;
+      --card-bg: #FFFFFF;
+      --card-border: #E4E4E7;
+      --text-white: #18181B;
+      --text-off: #3F3F46;
+      --text-muted: #6B7280;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #F4F4F5;
+      color: var(--text-off);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    .deck-container {
+      width: 100%;
+      max-width: 1200px;
+      aspect-ratio: 16 / 9;
+      background: var(--charcoal);
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 20px 50px rgba(24, 24, 27, 0.12), 0 0 0 1px rgba(24, 24, 27, 0.03);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      padding: 48px 56px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .slide.active { display: flex; animation: fadeIn 0.3s ease-in-out; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.99); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Header */
+    .slide-header {
+      margin-bottom: 24px;
+    }
+    .slide-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(255, 193, 7, 0.12);
+      border: 1px solid rgba(255, 193, 7, 0.3);
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold-dark);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .slide-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.25;
+    }
+    .slide-subtitle {
+      font-size: 13px;
+      color: var(--teal-light);
+      margin-top: 4px;
+    }
+
+    /* Content Layouts */
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; height: 100%; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; height: 100%; }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; height: 100%; }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .card.teal-border { border-top: 3px solid var(--teal); }
+    .card.gold-border { border-top: 3px solid var(--gold); }
+    .card.crimson-border { border-top: 3px solid var(--crimson); }
+    .card.amethyst-border { border-top: 3px solid var(--amethyst); }
+
+    .card-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-white);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-body {
+      font-size: 11.5px;
+      color: var(--text-off);
+      line-height: 1.5;
+    }
+    .card-impact {
+      margin-top: auto;
+      padding-top: 10px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--gold-dark);
+      border-top: 1px dashed rgba(24,24,27,0.1);
+    }
+
+    /* Title Slide 1 */
+    .slide-1-layout {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 36px;
+      height: 100%;
+      align-items: center;
+    }
+    .hero-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--text-white);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero-tagline {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 18px;
+      color: var(--teal-light);
+      margin-bottom: 16px;
+    }
+    .hero-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-off);
+      margin-bottom: 24px;
+    }
+    .team-badge-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .team-member-item {
+      background: rgba(24,24,27,0.03);
+      border: 1px solid rgba(24,24,27,0.08);
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+    .member-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold-dark);
+    }
+    .member-role {
+      font-size: 10.5px;
+      color: var(--text-muted);
+    }
+
+    /* Controls Bar */
+    .controls-dock {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+    }
+    .btn {
+      background: var(--amethyst);
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #621c64; }
+    .btn-secondary {
+      background: rgba(24,24,27,0.06);
+      color: var(--text-off);
+    }
+    .btn-secondary:hover { background: rgba(24,24,27,0.12); }
+    .slide-indicator {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold-dark);
+    }
+
+    /* Print Styles */
+    @media print {
+      body { background: white; padding: 0; }
+      .controls-dock { display: none; }
+      .deck-container {
+        box-shadow: none;
+        border: none;
+        max-width: 100%;
+      }
+      .slide {
+        display: flex !important;
+        position: relative;
+        page-break-after: always;
+        height: 100vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deck-container" id="deckContainer">
+
+    <!-- ================= SLIDE 1 ================= -->
+    <div class="slide active" id="slide-1" style="background: radial-gradient(circle at 10% 20%, rgba(74,21,75,0.10) 0%, #FFFFFF 65%);">
+      <div class="slide-1-layout">
+        <div>
+          <div class="slide-badge">DKC FELLOWSHIP 2026 • THEME 04: GENDER-BASED ONLINE VIOLENCE</div>
+          <h1 class="hero-title">Project Protiti<br><span style="color: var(--gold-dark); font-family: 'Hind Siliguri';">প্রতীতি</span></h1>
+          <div class="hero-tagline">“সন্দেহহীন সত্য, অকাট্য প্রমাণের অধিকার”<br><span style="font-size: 14px; color: var(--text-off);">From Doubt to Certitude: Structure for Digital Justice</span></div>
+          <p class="hero-desc">
+            A secure digital evidence vault, automated General Diary generator mapped to the <strong>Cyber Protection Act 2026</strong>, and offline-first emergency SOS frame designed to protect women facing digital violence in Bangladesh.
+          </p>
+          <div style="font-size: 11px; color: var(--text-muted);">
+            UNDP Bangladesh • European Union • SURGE | Selection: 1 Team Per Division
+          </div>
+        </div>
+        <div class="card amethyst-border" style="background: rgba(255,255,255,0.92); box-shadow: 0 10px 30px rgba(24,24,27,0.06);">
+          <div class="card-title" style="color: var(--gold-dark); margin-bottom: 12px;">👥 FELLOWSHIP TEAM ROSTER</div>
+          <div class="team-badge-list">
+            <div class="team-member-item">
+              <div class="member-name">Farzana Reza <span style="font-size: 9px; color: var(--teal-light);">(Core Fellow • Team Lead)</span></div>
+              <div class="member-role">Operations, Marketing, Pitching, Research & Acting UI/UX Lead</div>
+            </div>
+            <div class="team-member-item">
+              <div class="member-name">Abrar Masud <span style="font-size: 9px; color: var(--teal-light);">(Core Fellow • Systems)</span></div>
+              <div class="member-role">AI & Systems Engineer, Acting Mobile/Flutter Lead</div>
+            </div>
+            <div class="team-member-item">
+              <div class="member-name">Mithila Khan <span style="font-size: 9px; color: var(--teal-light);">(Core Fellow • Legal)</span></div>
+              <div class="member-role">Legal Advisor & Statutory Compliance (Cyber Protection Act 2026)</div>
+            </div>
+            <div class="team-member-item">
+              <div class="member-name">Slot 4 & Slot 5 <span style="font-size: 9px; color: var(--text-muted);">(Reserve Fellows)</span></div>
+              <div class="member-role">UI/UX Designer & Flutter Developer (Interim: Farzana & Abrar)</div>
+            </div>
+          </div>
+          <div style="margin-top: 14px; padding: 8px 10px; background: rgba(198,40,40,0.08); border: 1px solid rgba(198,40,40,0.3); border-radius: 6px; font-size: 10px; color: #7F1D1D;">
+            <strong>THE CRITICAL REALITY:</strong> 64% of Bangladeshi women face online harassment; 80%+ cases go unreported due to panic deletion and legal intimidation.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 2 ================= -->
+    <div class="slide" id="slide-2">
+      <div class="slide-header">
+        <div class="slide-badge">SLIDE 02 • THE REALITY</div>
+        <div class="slide-title">The Problem: Online Violence Destroys Evidence & Silences Victims</div>
+        <div class="slide-subtitle">Trauma, legal complexity, and physical coercion create an insurmountable barrier to justice.</div>
+      </div>
+      <div class="grid-4">
+        <div class="card crimson-border">
+          <div class="card-title">🚨 1. Panic Deletion</div>
+          <div class="card-body">
+            Out of immediate terror or fear of family discovery, 80%+ of victims delete chat logs and block abusers, destroying vital bitwise proof before police can act.
+          </div>
+          <div class="card-impact">Result: Case collapses under CrPC Sec 154 due to zero evidence.</div>
+        </div>
+        <div class="card gold-border">
+          <div class="card-title">⚖️ 2. Legal Intimidation</div>
+          <div class="card-body">
+            The Cyber Security Act has been repealed by the <strong>Cyber Protection Act 2026</strong>. Drafting an admissible General Diary (GD) is bewildering for traumatized victims.
+          </div>
+          <div class="card-impact">Result: Duty Officers at local Thanas reject unstructured complaints.</div>
+        </div>
+        <div class="card teal-border">
+          <div class="card-title">🔍 3. The Forensic Gap</div>
+          <div class="card-body">
+            Simple screenshots are easily dismissed in court. Defense lawyers challenge them for lack of URLs, timestamps, or <strong>Evidence Act Sec 65B</strong> certificates.
+          </div>
+          <div class="card-impact">Result: Evidence is ruled inadmissible by Divisional Cyber Tribunals.</div>
+        </div>
+        <div class="card amethyst-border">
+          <div class="card-title">📱 4. Physical Coercion</div>
+          <div class="card-body">
+            Abusive partners or family members frequently demand phones. An obvious anti-harassment app invites immediate domestic escalation and physical assault.
+          </div>
+          <div class="card-impact">Result: Survivors are forced to delete safety tools or face violence.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 3 ================= -->
+    <div class="slide" id="slide-3">
+      <div class="slide-header">
+        <div class="slide-badge">SLIDE 03 • THE SOLUTION</div>
+        <div class="slide-title">The Solution: Protiti (প্রতীতি) — Structural Safety & Conviction</div>
+        <div class="slide-subtitle">An encrypted, trauma-informed digital assistant engineered specifically for Bangladesh.</div>
+      </div>
+      <div class="grid-2">
+        <div class="card teal-border">
+          <div class="card-title">🔒 On-Device Secure Vault (SQLCipher)</div>
+          <div class="card-body">
+            • <strong>Zero Cloud Exposure:</strong> All sensitive media encrypted locally using AES-256.<br>
+            • <strong>Duress PIN (Decoy Vault):</strong> Entering PIN <code>9999</code> loads benign notes and recipes to safely satisfy coerced unlocks.<br>
+            • <strong>Stealth Calculator Disguise:</strong> Functional arithmetic utility masks the vault.
+          </div>
+        </div>
+        <div class="card gold-border">
+          <div class="card-title">📝 Automated e-GD Generator</div>
+          <div class="card-body">
+            • <strong>Police Schema Mapping:</strong> Maps facts directly to the Bangladesh Police e-GD portal (<code>gd.police.gov.bd</code>).<br>
+            • <strong>CPA 2026 Engine:</strong> Automatic statutory mapping for deepfakes, blackmail, and NCII.<br>
+            • <strong>Bilingual Output:</strong> Ready-to-file Bengali/English PDF with verification QR.
+          </div>
+        </div>
+        <div class="card crimson-border">
+          <div class="card-title">🚨 Offline Panic SOS Frame</div>
+          <div class="card-body">
+            • <strong>3-Second Hold Trigger:</strong> Radial progress circle with haptics prevents accidental triggers.<br>
+            • <strong>Zero-Data SMS Fallback:</strong> Dispatches GPS coordinates via cellular SMS without mobile internet.<br>
+            • <strong>Direct Emergency Hotlines:</strong> Instant speed dial to 999 and Cyber Police BD (<code>01320000888</code>).
+          </div>
+        </div>
+        <div class="card amethyst-border">
+          <div class="card-title">🤝 Support Bridge Network</div>
+          <div class="card-body">
+            • <strong>Institutional Coalition:</strong> Direct triage to BLAST (2,500 panel lawyers) & BNWLA for pro-bono court representation.<br>
+            • <strong>Crisis Counseling:</strong> Integrated directory for Kaan Pete Roi & Moner Janala.<br>
+            • <strong>Confidential Triage:</strong> Fast-tracked to female police cyber officers.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 4 ================= -->
+    <div class="slide" id="slide-4">
+      <div class="slide-header">
+        <div class="slide-badge">SLIDE 04 • USER JOURNEY</div>
+        <div class="slide-title">How It Works: 5-Stage Journey From Chaos to Certitude</div>
+        <div class="slide-subtitle">A seamless, trauma-informed pipeline turning traumatic harassment into courtroom-ready proof.</div>
+      </div>
+      <div class="grid-5" style="height: 60%;">
+        <div class="card teal-border">
+          <div class="card-title" style="font-size: 13px;">1. Capture</div>
+          <div class="card-body" style="font-size: 11px;">Survivor securely logs screenshot, voice note, URL, or chat export before blocking the abuser.</div>
+        </div>
+        <div class="card gold-border">
+          <div class="card-title" style="font-size: 13px;">2. Authenticate</div>
+          <div class="card-body" style="font-size: 11px;">Protiti extracts RFC 3161 timestamps, EXIF tags, and generates bitwise SHA-256 cryptographic hashes.</div>
+        </div>
+        <div class="card amethyst-border">
+          <div class="card-title" style="font-size: 13px;">3. Triage</div>
+          <div class="card-body" style="font-size: 11px;">Trauma-informed 4-step wizard gathers incident facts in plain, supportive Bangla without re-victimization.</div>
+        </div>
+        <div class="card teal-border">
+          <div class="card-title" style="font-size: 13px;">4. Formulate</div>
+          <div class="card-body" style="font-size: 11px;">Engine auto-maps facts to CPA 2026 sections, generating DMP-standard General Diary payload.</div>
+        </div>
+        <div class="card crimson-border">
+          <div class="card-title" style="font-size: 13px;">5. Action</div>
+          <div class="card-body" style="font-size: 11px;">Survivor files online via Thana e-GD portal or dispatches encrypted dossier to BLAST/BNWLA lawyers.</div>
+        </div>
+      </div>
+      <div class="card gold-border" style="margin-top: 16px; padding: 12px 18px; background: rgba(255,193,7,0.06);">
+        <div style="font-size: 11.5px; color: var(--text-white);">
+          <strong>BEFORE vs AFTER PROTITI:</strong><br>
+          <span style="color: var(--crimson);">BEFORE:</span> Panic deletion → 0 legal proof → Duty officer rejection → Abuser impunity.<br>
+          <span style="color: var(--teal-light);">AFTER:</span> Untouched encrypted vault → Bitwise SHA-256 verification → Evidence Act Sec 65B certified GD → Swift police action.
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 5 ================= -->
+    <div class="slide" id="slide-5">
+      <div class="slide-header">
+        <div class="slide-badge">SLIDE 05 • ARCHITECTURE</div>
+        <div class="slide-title">Technology & Security: Built for Real-World Survival</div>
+        <div class="slide-subtitle">Engineered to withstand physical coercion, rural network blackouts, and courtroom scrutiny.</div>
+      </div>
+      <div class="grid-2">
+        <div class="card teal-border">
+          <div class="card-title">🔐 Hardware Keystore & Duress Decoy PIN</div>
+          <div class="card-body">
+            • <strong>SQLCipher AES-256:</strong> Cryptographic keys stored inside Android Keystore / iOS Keychain.<br>
+            • <strong>Physical Coercion Defense:</strong> Entering Master PIN <code>1234</code> unlocks genuine forensic evidence; entering Duress PIN <code>9999</code> displays an innocent student notebook with recipes.<br>
+            • <strong>Zero Forensic Markers:</strong> Decoy mode completely conceals the existence of hidden forensic storage.
+          </div>
+        </div>
+        <div class="card amethyst-border">
+          <div class="card-title">📲 Smart Calc Launcher Stealth</div>
+          <div class="card-body">
+            • <strong>OS Activity-Alias:</strong> Dynamically switches app icon and title to a working calculator on the home screen.<br>
+            • <strong>Stealth Unlock:</strong> Typing <code>1971=</code> opens the vault; typing <code>0000=</code> opens decoy notes.<br>
+            • <strong>Quick-Exit Gesture:</strong> Proximity/accelerometer face-down flip detection instantly wipes active RAM cache and restores calculator view in &lt;300ms.
+          </div>
+        </div>
+        <div class="card crimson-border">
+          <div class="card-title">📡 Zero-Data SMS Fallback</div>
+          <div class="card-body">
+            • <strong>Offline Survivability:</strong> Compact GPS coordinates (&lt;160 chars) transmitted over standard cellular SMS.<br>
+            • <strong>Zero Internet Dependency:</strong> Operates seamlessly during rural data outages, credit exhaustion, or mobile throttling.<br>
+            • <strong>Emergency USSD Code:</strong> Quick broadcast protocol for feature phone cross-compatibility.
+          </div>
+        </div>
+        <div class="card gold-border">
+          <div class="card-title">⚖️ Evidence Act Sec 65B Admissibility Engine</div>
+          <div class="card-body">
+            • <strong>NIST FIPS 180-4 Hashing:</strong> Produces cryptographic SHA-256 fingerprints the instant evidence is ingested.<br>
+            • <strong>Automated Sec 65B Certificates:</strong> Generates court-admissible electronic authenticity certificates conforming to the Evidence (Amendment) Act 2022.<br>
+            • <strong>Forensic Chain of Custody:</strong> Adheres to CID Forensic Lab evidentiary protocols.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 6 ================= -->
+    <div class="slide" id="slide-6">
+      <div class="slide-header">
+        <div class="slide-badge">SLIDE 06 • COMMUNITY & IMPACT</div>
+        <div class="slide-title">Target Community & Measurable Ecosystem Impact</div>
+        <div class="slide-subtitle">Empowering female students, rural youth, police cyber cells, and pro-bono litigators.</div>
+      </div>
+      <div class="grid-2">
+        <div class="card teal-border">
+          <div class="card-title">👥 Key Beneficiaries & Strategic Stakeholders</div>
+          <div class="card-body">
+            • <strong>Primary Users:</strong> Female university and college students (18–30) residing in student halls and dormitories facing non-consensual image distribution and deepfakes.<br><br>
+            • <strong>Grassroots Reach:</strong> Rural and peri-urban young women reached through BRAC community networks and Union Digital Centres (UDCs).<br><br>
+            • <strong>Institutional Partners:</strong> Police Cyber Support for Women (PCSW), Thana cyber desks, and pro-bono litigators at BLAST and BNWLA.
+          </div>
+        </div>
+        <div class="card gold-border">
+          <div class="card-title">📈 8-Month Quantitative Impact Targets</div>
+          <div class="card-body">
+            • <strong style="color: var(--teal-light);">80%+ Reduction in Evidence Destruction:</strong> Survivors preserve bitwise intact records instead of deleting traumatizing chats.<br><br>
+            • <strong style="color: var(--teal-light);">5,000 Discrete Toolkits Distributed:</strong> Folding survivor pocket safety cards distributed across Dhaka Division campus dormitories.<br><br>
+            • <strong style="color: var(--teal-light);">3x Increase in Admissible e-GDs Filed:</strong> Eliminates bureaucratic rejection at local police stations.<br><br>
+            • <strong style="color: var(--teal-light);">100% Pro-Bono Legal Escalation:</strong> Rapid referral to BLAST's 2,500 panel lawyers.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 7 ================= -->
+    <div class="slide" id="slide-7">
+      <div class="slide-header">
+        <div class="slide-badge">SLIDE 07 • ROADMAP & BUDGET</div>
+        <div class="slide-title">8-Month Implementation Roadmap & BDT 50,000 Seed Grant</div>
+        <div class="slide-subtitle">Strictly 0% spent on personal stipends; 100% dedicated to toolkits, workshops, and survivor safety.</div>
+      </div>
+      <div class="grid-2">
+        <div class="card amethyst-border">
+          <div class="card-title">📅 8-Month Phased Implementation</div>
+          <div class="card-body">
+            • <strong>Phase 1: Foundation & Audit (M1–M3 | Oct–Dec 2026):</strong><br>
+            Finalize on-device SQLCipher vault, Duress PIN, e-GD schema. Conduct BLAST forensic hash validation. Attend Innovation Bootcamp.<br><br>
+            • <strong>Phase 2: Dhaka Division Pilot (M4–M6 | Jan–Mar 2027):</strong><br>
+            Roll out "Train the Trainer" workshops across Dhaka Division campus dorms (DU, JU, Eden Mohila College, BRACU, NSU). Distribute 5,000 survivor toolkits. Attend Progress Bootcamp.<br><br>
+            • <strong>Phase 3: Impact Showcase & National Roadmap (M7–M8 | Apr–May 2027):</strong><br>
+            National showcase with Cyber Police Centre & UNDP presenting audited Dhaka Pilot results plus the National 8-Division Expansion Roadmap. Open-source e-GD framework. Transition to permanent alumni network.
+          </div>
+        </div>
+        <div class="card gold-border">
+          <div class="card-title">💰 BDT 50,000 Seed Grant — Dhaka Division Pilot</div>
+          <div class="card-body">
+            • <strong>Survivor Toolkits & Handbooks (16%):</strong> BDT 8,000<br>
+            <span style="font-size: 10px; color: var(--text-muted);">5,000 discrete folding survivor cards @ BDT 1.30 + 23 Ambassador/Partner Handbooks.</span><br><br>
+            • <strong>Campus Workshop Logistics (40%):</strong> BDT 20,000<br>
+            <span style="font-size: 10px; color: var(--text-muted);">Refreshments, materials & signage for 10 campus activations across 5 Dhaka Division universities.</span><br><br>
+            • <strong>Ambassador Ground Logistics (24%):</strong> BDT 12,000<br>
+            <span style="font-size: 10px; color: var(--text-muted);">Voucher-backed transit subsidies for 8 female student ambassadors, 8 months.</span><br><br>
+            • <strong>Hotline Triage & Connectivity (12%):</strong> BDT 6,000 | <strong>Audit & Roadmap Prep (8%):</strong> BDT 4,000<br><br>
+            <span style="font-size: 10px; color: var(--gold-dark); font-weight: 700;">*UNDP / DKC COMPLIANCE: Disbursed in 2 tranches (BDT 25k x 2). Strictly BDT 0 on personal stipends. Grant funds Dhaka Division only — national scale is a Phase 2 roadmap, not a fellowship deliverable.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 8 ================= -->
+    <div class="slide" id="slide-8" style="background: radial-gradient(circle at 90% 20%, rgba(74,21,75,0.10) 0%, #FFFFFF 65%);">
+      <div class="slide-1-layout">
+        <div>
+          <div class="slide-badge">SLIDE 08 • SUSTAINABILITY & CALL TO ACTION</div>
+          <h2 style="font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 700; color: var(--text-white); margin-bottom: 16px;">
+            A Lasting Frame for Digital Justice
+          </h2>
+          <div class="card-body" style="font-size: 13px; line-height: 1.7; margin-bottom: 24px;">
+            • <strong>Institutional Handover:</strong> Engineered for permanent stewardship by Police Cyber Support for Women (PCSW) and the ICT Division's Cyber Help initiatives.<br>
+            • <strong>Open-Source Legal Schema:</strong> The e-GD mapping engine is released as open-source civic tech, allowing legal aid clinics to maintain statutory updates.<br>
+            • <strong>Alumni Ambassador Continuity:</strong> Trained student ambassadors onboard future cohorts via the lifelong DKC Alumni Network.
+          </div>
+          <div style="font-size: 12px; color: var(--teal-light); font-weight: 600;">
+            Team Protiti • Ready for Stage 1 Evaluation & Innovation Bootcamp
+          </div>
+        </div>
+        <div class="card gold-border" style="background: rgba(255,255,255,0.92); box-shadow: 0 10px 30px rgba(24,24,27,0.06); padding: 28px; text-align: center; justify-content: center;">
+          <div style="font-size: 24px; margin-bottom: 12px;">🛡️</div>
+          <div style="font-family: 'Hind Siliguri', sans-serif; font-size: 22px; font-weight: 700; color: var(--gold-dark); margin-bottom: 12px; line-height: 1.3;">
+            “সন্দেহহীন সত্য, অকাট্য প্রমাণের অধিকার।”
+          </div>
+          <p style="font-size: 13.5px; font-style: italic; color: var(--text-off); line-height: 1.5; margin-bottom: 20px;">
+            “Every woman in Bangladesh deserves a frame of safety. Together, we build the structure for undeniable certitude.”
+          </p>
+          <div style="font-size: 11px; color: var(--text-muted); border-top: 1px solid rgba(24,24,27,0.1); padding-top: 12px;">
+            <strong>Team Lead:</strong> Farzana Reza<br>
+            DKC Digital Respect & Cohesion Fellowship 2026
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Navigation Dock -->
+  <div class="controls-dock">
+    <div style="display: flex; gap: 8px;">
+      <button class="btn btn-secondary" onclick="prevSlide()">◀ Previous</button>
+      <button class="btn" onclick="nextSlide()">Next Slide ▶</button>
+    </div>
+    <div class="slide-indicator" id="slideIndicator">Slide 1 of 8</div>
+    <div style="display: flex; gap: 8px;">
+      <button class="btn btn-secondary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      <a href="Protiti_Pitch_Deck.pptx" download class="btn" style="text-decoration: none;">📥 Download PPTX</a>
+    </div>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 8;
+
+    function showSlide(n) {
+      if (n < 1) n = 1;
+      if (n > totalSlides) n = totalSlides;
+      currentSlide = n;
+
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById(`slide-${i}`);
+        if (slide) slide.classList.remove('active');
+      }
+
+      const activeSlide = document.getElementById(`slide-${currentSlide}`);
+      if (activeSlide) activeSlide.classList.add('active');
+
+      document.getElementById('slideIndicator').textContent = `Slide ${currentSlide} of ${totalSlides}`;
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+  </script>
+</body>
+</html>
